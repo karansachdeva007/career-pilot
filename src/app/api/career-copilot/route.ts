@@ -23,7 +23,7 @@ export async function POST(req: Request) {
     const arrayBuffer = await file.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
 
-    const pdfParser = new PDFParser(null, 1);
+    const pdfParser = new PDFParser(null, true);
 
     const extractedText = await new Promise<string>((resolve, reject) => {
       pdfParser.on("pdfParser_dataError", (errData: any) => reject(errData.parserError));
