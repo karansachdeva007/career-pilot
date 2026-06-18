@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { executeWorkflow } from "@/lib/langgraph/executor";
 
-export const maxDuration = 300; // Allow 5 minutes for the multi-agent workflow
+export const maxDuration = 60; // Max allowed for hobby tier is 60s
 
 export async function POST(req: Request) {
   try {

@@ -1,7 +1,11 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
-import { pipeline } from "@xenova/transformers";
+import { pipeline, env } from "@xenova/transformers";
 import { Groq } from "groq-sdk";
+
+// Configure transformers for serverless environment
+env.allowLocalModels = false;
+env.useBrowserCache = false;
 import { auth } from "@/auth";
 
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
