@@ -1,6 +1,10 @@
 import Groq from "groq-sdk";
-import { pipeline } from "@xenova/transformers";
+import { pipeline, env } from "@xenova/transformers";
 import { prisma } from "@/lib/db";
+
+// Configure transformers for serverless environment
+env.allowLocalModels = false;
+env.useBrowserCache = false;
 
 let extractor: any = null;
 

@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { executeWorkflow } from "@/lib/langgraph/executor";
+import PDFParser from "pdf2json";
 
 export const maxDuration = 60; // Max allowed for hobby tier is 60s
 
@@ -22,7 +23,6 @@ export async function POST(req: Request) {
     const arrayBuffer = await file.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
 
-    const PDFParser = require("pdf2json");
     const pdfParser = new PDFParser(null, 1);
 
     const extractedText = await new Promise<string>((resolve, reject) => {
